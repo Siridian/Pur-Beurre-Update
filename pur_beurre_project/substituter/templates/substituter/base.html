@@ -46,7 +46,7 @@
           <li class="nav-item">
             <form class="form-inline nav-form" action="{% url 'substituter:search' %}" method="get">
               <div class="form-group">
-                <input type="text" name="query" value="" id="name">
+                <input class="searchform" type="text" name="query" value="" id="name">
               </div>
 
               <button type="submit" class="btn btn-primary">Chercher</button>
@@ -99,6 +99,11 @@
 
   <!-- Custom scripts for this template -->
   <script src="{% static 'substituter/js/creative.min.js' %}"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+  crossorigin="anonymous"></script>
+  <script src="{% static 'substituter/js/custom_creative.js' %}"></script>
 
 </body>
 

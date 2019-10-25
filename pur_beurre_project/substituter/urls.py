@@ -11,5 +11,6 @@ from substituter import views
 urlpatterns = [
     path(r'search/', views.search, name="search"),
     path(r'detail/<int:product_id>/', views.detail, name="detail"),
+    path(r'autocomplete/', views._autocomplete, name="autocomplete"),
     path(r'legal/', views.legal, name="legal")
     ]

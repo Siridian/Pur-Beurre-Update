@@ -15,7 +15,8 @@
 <section class="page-section">
   <div class="container">
     <div class="col-lg-12 col-md-12 text-center">
-      <h2> {{ user.email }} </p>
+      <h2> {{ user.email }} </h2>
+      <a class="h5" href="{% url 'password_change' %}">Modifier le mot de passe</a>
     </div>
   </div>
 </section>

@@ -6,6 +6,7 @@ food product.
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.sessions.models import Session
+from django.http import JsonResponse
 
 from sentry_sdk import capture_message
 
@@ -100,6 +101,13 @@ def search(request):
     capture_message('New search : ' + request.GET.get("query"))
 
     return render(request, 'substituter/search.html', context)
+
+
+def _autocomplete(request):
+    string = request.GET.get('term')
+    matching_products = Product.objects.filter(name__icontains=string)[:20]
+    response = [product.name for product in matching_products]
+    return JsonResponse(response, safe=False)
 
 
 def detail(request, product_id):
