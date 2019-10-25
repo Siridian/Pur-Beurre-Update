@@ -8,6 +8,34 @@ from django.test.client import Client
 from .models import User, UserManager
 from substituter.models import Product
 
+
+# Utility
+
+class TestAuthenticatedHTML(TestCase):
+    #This class tests that the HTML generated differs for an authenticated user
+
+    @classmethod 
+    def setUpTestData(cls):
+        #sets up a user
+
+        u = User.objects.create(email="testmail")
+        u.set_password('testpass')
+        u.save()
+
+    def test_HTML_authenticated_changes(self):
+        #tests that bookmarked view returns a 200 code for logged in users
+
+        c = Client()   
+        
+        response = c.get("/")
+        self.assertContains(response, "Inscription")
+
+        c.login(email='testmail', password='testpass')
+
+        response = c.get("/")
+        self.assertNotContains(response, "Inscription")
+
+
 # Models
 
 class TestUserModel(TestCase):
