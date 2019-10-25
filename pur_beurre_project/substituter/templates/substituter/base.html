@@ -27,6 +27,7 @@
   <!-- Theme CSS - Includes Bootstrap -->
   <link href="{% static 'substituter/css/creative.min.css' %}" rel="stylesheet">
   <link href="{% static 'substituter/css/custom_creative.css' %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" />
 
 </head>
 
@@ -51,6 +52,7 @@
               <button type="submit" class="btn btn-primary">Chercher</button>
             </form>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{% url 'accounts:dashboard' %}"><i class="fas fa-user"></i></a>
           </li>
@@ -60,6 +62,14 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" alt="Déconnexion"></i></a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'login' %}"><i class="fas fa-sign-in-alt" alt="Connexion"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'accounts:signup' %}">Inscription</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>

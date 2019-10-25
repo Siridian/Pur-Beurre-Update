@@ -1,0 +1,7 @@
+.env
+.coverage
+htmlcov/
+__pycache__
+pur_beurre_project/staticfiles/
+pur_beurre_project/pur_beurre_project/settings/production.py
+pur_beurre_project/logs
