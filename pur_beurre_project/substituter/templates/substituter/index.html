@@ -1,0 +1,73 @@
+{% extends 'substituter/base.html' %}
+
+{% block content %}
+
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center text-center">
+      <div class="col-lg-10 align-self-end">
+        <h1 class="text-uppercase text-white font-weight-bold">Du gras, oui, mais de qualité !</h1>
+        <hr class="divider my-4">
+      </div>
+      <div class="col-lg-8 text-center align-self-baseline">
+        <h2 class="text-white mt-0">Trouvez un produit de substitution pour ceux que vous consommez tous les jours.</h2>
+        <form action="{% url 'substituter:search' %}" method="get">
+          <div class="form-group">
+            <input type="text" name="query" value="" id="name">
+          </div>
+          <button type="submit" class="btn btn-primary">Chercher</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <!-- Services Section -->
+  <section class="page-section" id="about">
+    <div class="container">
+      <h2 class="text-center mt-0">Colette & Rémy</h2>
+      <hr class="divider my-4">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 text-center history-container">    
+          <div class="bottomdiv">
+            <img src="../../static/substituter/img/colette.png" alt="Portrait de Colette">
+            <h3 class="h4 mb-2">Colette</h3>
+            <p class="text-muted mb-0">"Nous aimons tous manger, surtout en France ! Personnellement, une baguette fraîche, du bon fromage de chèvre et un bon vin rouge me suffisent amplement. Comme tout le monde, je fais mes courses au supermarché. Mais petit à petit je me suis rendue compte, surtout lorsque nous avons ouvert le restaurant, que je pouvais remplacer les produits aseptisés que j'avais l'habitude d'acheter par de bons produits du terroir. Et souvent pour le même prix !"</p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 text-center history-container">
+          <div class="bottomdiv">
+            <img src="../../static/substituter/img/ratatouille.jpg" alt="Portrait de Rémy">
+            <h3 class="h4 mb-2">Rémy</h3>
+            <p class="text-muted mb-0">"Pour ma part je me rendais déjà dans bien des magasins car j'aime beaucoup me balader, surtout dans les caves et les cuisines. Je connaissais par coeur le contenu des boutiques bio (dont je raffole) ainsi que les ingrédients de tous les aliments vendus. Lorsque Colette m'a demandé si elle pouvait remplacer son Nutella matinal par un aliment plus sain, je savais tout de suite où le trouver. L'idée de Pur Beurre était née !"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section class="page-section bg-primary" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mt-0 text-white">Contactez-nous !</h2>
+          <hr class="divider my-4">
+          <p class="text-white mb-5">Du gras, oui, mais de qualité !</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+          <i class="fas fa-phone fa-3x mb-3 text-white"></i>
+          <h6 class="text-white">0000000000</h6>
+        </div>
+        <div class="col-lg-4 mr-auto text-center">
+          <i class="fas fa-envelope fa-3x mb-3 text-white"></i>
+          <h6 class="text-white">mail@mail.com</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

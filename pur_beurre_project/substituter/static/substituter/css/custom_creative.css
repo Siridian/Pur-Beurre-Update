@@ -1,0 +1,82 @@
+body{
+    font-family: "Scope One", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  color: #C45525;
+}
+
+.product {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.product-pic {
+  width: 300px;
+  height: 300px;
+}
+
+p.nutriscore {
+  position: relative;
+  border-radius: 50%;
+  background-color: #345A61;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  text-align: center;
+  line-height: 2rem;
+  margin: 0;
+  left: 305px;
+  top: 15px;
+  color: white;
+}
+
+.bottomdiv {
+    position: relative;
+    bottom: 0;
+}
+
+.history-container {
+    position: relative;
+}
+
+.bg-img {
+    background-image: linear-gradient(rgba(92, 77, 66, 0.8) 0px, rgba(92, 77, 66, 0.8) 100%), url("../img/bg-masthead.jpg");
+    background-size: cover;
+}
+
+.bg-primary {
+    background-color: #DE9440!important;
+}
+
+footer.bg-light {
+    background-color: #C45525!important;
+}
+
+.btn {
+    background-color: #DE9440;
+    border-color: #DE9440;
+}
+
+hr.divider {
+    border-color: #C45525;
+}
+
+.nav-form input {
+    height: 60%
+}
+
+.nav-form button {
+    font-size: 0.8em;
+    padding: 1px 2px;
+}
+
+#mainNav .navbar-brand, #mainNav .navbar-nav .nav-item .nav-link, .btn{
+    font-family: "Scope One", sans-serif;
+}
+
+.registration-form{
+    color: white;
+}

@@ -1,0 +1,51 @@
+{% extends 'substituter/base.html' %}
+
+{% block content %}
+
+<!-- About Section -->
+  <section class="page-section bg-img" id="search">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+          {% if status == "ok" %}
+          <img class="img-responsive" src="{{ base_product.image }}" alt="{{ base_product.name }}">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="page-section" id="about">
+    <div class="container">
+      {% if substitute_list %}
+      <h2 class="text-center mt-0">Vous pouvez remplacer cet aliment par :</h2>
+      <div class="row">
+        {% for substitute in substitute_list %}
+          <div class="col-lg-4 col-md-12 text-center product">
+            <p class="nutriscore">{{ substitute.grade }}</p>
+            <a class="product-picture" href="{% url 'substituter:detail' product_id=substitute.id %}">
+              <img class="img-responsive product-pic" src="{{ substitute.image }}" alt="{{ substitute.name }}">
+              <h4 class="h4 mb-2">{{ substitute.name }}</h4>
+            </a>
+            {% if substitute not in bookmarked_list %}
+            <a class="h4 mb-2 text-muted mb-0" href="{% url 'bookmarks:save' substitute_id=substitute.id %}"><i class="fas fa-save"> </i>Sauvegarder</a>
+            {% else %}
+            <p class="h4 mb-2 text-muted mb-0">Sauvegardé !</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      {% elif status == "ok" %} 
+      <h2 class="text-center mt-0">Aucun aliment plus sain n'a été trouvé</h2>
+      {% else %}
+      <h2 class="text-center mt-0">Aucun aliment ne correspond à votre recherche</h2>
+      {% endif %}
+    </div>
+  </section>
+
+  
+
+  
+
+{% endblock %}
