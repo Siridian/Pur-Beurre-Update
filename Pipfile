@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+psycopg2 = "*"
+django-debug-toolbar = "*"
+requests = "*"
+gunicorn = "*"
+django-heroku = "*"
+whitenoise = "*"
+dj-database-url = "*"
+coverage = "*"
+django-extensions = "*"
+pytest = "*"
+sentry-sdk = "==0.12.3"
+raven = "*"
+
+[requires]
+python_version = "3.6"

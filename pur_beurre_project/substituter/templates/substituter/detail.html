@@ -1,0 +1,47 @@
+{% extends 'substituter/base.html' %}
+
+{% block content %}
+
+<!-- About Section -->
+  <section class="page-section bg-primary" id="search">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+          <h1> {{ product.name }} </h1>
+          <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="page-section" id="about">
+    <div class="container">
+      <hr class="divider my-4">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 text-center">
+          <h5> Nutriscore : {{ product.grade }} </h5>
+        </div>
+        <div class="col-lg-6 col-md-6 text-center">
+          <h5> Repères nutritionnels pour 100g </h5>
+          <ul class="col-lg-6 col-md-6 text-center">
+            <li>Sel : {% if product.salt %} {{ product.salt }} g {% else %} Non renseigné {% endif %} </li>
+            <li>Protéines : {% if product.proteins %} {{ product.proteins }} g {% else %} Non renseigné {% endif %} </li>
+            <li>Glucides : {% if product.carbohydrates %} {{ product.carbohydrates }} g {% else %} Non renseigné {% endif %} </li>
+            <li>Sucres : {% if product.sugars %} {{ product.sugars }} g {% else %} Non renseigné {% endif %} </li>
+            <li>Lipides : {% if product.fats %} {{ product.fats }} g {% else %} Non renseigné {% endif %} </li>
+            <li>Fibres : {% if product.fibers %} {{ product.fibers }} g {% else %} Non renseigné {% endif %} </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 text-center">
+        <a href="{{ product.link }}"> Voir la fiche d'OpenFoodFacts</a>
+      </div>
+    </div>
+  </section>
+
+  
+
+  
+
+{% endblock %}
