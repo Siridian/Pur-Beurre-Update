@@ -1,4 +1,4 @@
 $('.searchform').autocomplete({
-    source : "substituter/autocomplete/",
+    source : "/substituter/autocomplete/",
     minLength : 3
 });
