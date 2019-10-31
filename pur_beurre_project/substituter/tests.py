@@ -4,6 +4,8 @@ This module contains the various unit tests for the substituter app
 
 from django.test import TestCase
 from django.test.client import Client
+from django.http import JsonResponse
+import json
 
 from .models import Product, Category
 from accounts.models import User
@@ -54,6 +56,7 @@ class TestModels(TestCase):
         cat = Category.objects.create(name="test")
         self.assertTrue(isinstance(cat, Category))
         self.assertEqual(type(cat.name), str)
+
 
 # Views
 
@@ -184,6 +187,62 @@ class TestViewDetail(TestCase):
         response = self.client.get("/substituter/detail/1", follow=True)
 
         self.assertEqual(response.context['product'].name, "testname")
+
+
+class TestViewAutocomplete(TestCase):
+    #This class tests the Autocomplete view
+
+    @classmethod 
+    def setUpTestData(cls):
+        #sets up several products with different names
+
+        Product.objects.create(name = "foo")
+        Product.objects.create(name = "bar")
+        Product.objects.create(name = "foobar")
+        Product.objects.create(name = "foba")
+
+    def test_autocomplete_json_type(self):
+        #tests that detail view returns a 200 code for an existing product
+
+        response = self.client.get("/substituter/autocomplete", 
+                                   {'term': 'foobar'},
+                                   follow=True
+        )
+        self.assertEqual(type(response), JsonResponse)
+
+
+    def test_autocomplete_suggestions(self):
+        #tests that detail view returns a 200 code for an existing product
+
+        response = self.client.get("/substituter/autocomplete", 
+                                   {'term': 'fo'},
+                                   follow=True
+        )
+        self.assertEqual(json.loads(response.content), ['foo', 'foobar', 'foba'])
+
+        response = self.client.get("/substituter/autocomplete", 
+                                   {'term': 'bar'},
+                                   follow=True
+        )
+        self.assertEqual(json.loads(response.content), ['bar', 'foobar'])
+
+        response = self.client.get("/substituter/autocomplete", 
+                                   {'term': 'foo'},
+                                   follow=True
+        )
+        self.assertEqual(json.loads(response.content), ['foo', 'foobar'])
+
+        response = self.client.get("/substituter/autocomplete", 
+                                   {'term': 'foba'},
+                                   follow=True
+        )
+        self.assertEqual(json.loads(response.content), ['foba'])
+
+        response = self.client.get("/substituter/autocomplete", 
+                                   {'term': 'barfoo'},
+                                   follow=True
+        )
+        self.assertEqual(json.loads(response.content), [])
 
 
 class TestViewLegal(TestCase):
